@@ -31,7 +31,7 @@ public class Eleven {
             adjust=5;
         }
         double sum=adjust+base;
-        double number=0;
+        double number=0.0;
         if(order.equals("delivery")){
             number=value*0.10;
         }
@@ -95,3 +95,4 @@ public class Eleven {
 
     }
 }
+
