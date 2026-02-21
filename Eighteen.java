@@ -10,10 +10,10 @@ public class Eighteen {
 
     double baserate=0.0;
     if(shipping.equals("economy")){
-        baserate=5;
+        baserate=5.0;
     }
     else if(shipping.equals("standard")){
-        baserate=10;
+        baserate=10.0;
     }
     else if(shipping.equals("express")){
         baserate=25;
@@ -92,3 +92,4 @@ public class Eighteen {
     
    } 
 }
+
