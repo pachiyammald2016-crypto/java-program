@@ -1,85 +1,64 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
-public class Two{
+public class Two {
     public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int creditScore = sc.nextInt();
-        double annualIncome = sc.nextDouble();
-        double debtRatio = sc.nextDouble();
-        sc.nextLine(); 
-        String loanType = sc.nextLine();
-        String decision = "Rejected";
-        double maxLoanAmount = 0.0;
-        if (creditScore < 600 || debtRatio > 50){
-        decision = "Rejected";
-        maxLoanAmount = 0.0;
-        } 
-        else{
-            if (creditScore >= 750) {
-                if (debtRatio <= 30) {
-                    if (loanType.equals("Home")) {
-                        decision = "Approved";
-                        maxLoanAmount = annualIncome * 4;
-                    }
-                    else if (loanType.equals("Personal")) {
-                        decision = "Approved";
-                        maxLoanAmount = annualIncome * 1;
-                    }
-                    else if (loanType.equals("Business")) {
-                        decision = "Approved";
-                        maxLoanAmount = annualIncome * 3;
-                    }
-                } else {
-                decision = "Needs Review";
-                }
-            } 
-            else if (creditScore >= 700) {
-                if (debtRatio <= 30) {
-                    if (loanType.equals("Business") || loanType.equals("Home")) {
-                        decision = "Approved";
-                        maxLoanAmount = annualIncome * 3;
-                    }
-                } 
-                else if (debtRatio <= 40) {
-                    if (loanType.equals("Home")) {
-                        decision = "Needs Review";
-                        maxLoanAmount = annualIncome * 3;
-                    } 
-                    else if (loanType.equals("Business")) {
-                        decision = "Approved";
-                        maxLoanAmount = annualIncome * 3;
-                    } 
-                    else {
-                        decision = "Needs Review";
-                    }
-                } 
-                else {
-                    decision = "Needs Review";
-                }
-            } 
-            else if (creditScore >= 650) {
-                if (debtRatio <= 40) {
-                    if (loanType.equals("Personal")) {
-                    decision = "Needs Review";
-                    maxLoanAmount = annualIncome * 0.5;
-                    } 
-                    else {
-                    decision = "Needs Review";
-                    }
-                } 
-                else {
-                decision = "Rejected";
-                }
-            } 
-            else {
-            decision = "Rejected";
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String grade="";
+        String status="";
+        double avg=0.0;
+        int max=0;
+        int count=0;
+        int count1=0;
+        for(int i=1;i<=n;i++){
+            String name=sc.next();
+            int score=sc.nextInt();
+            if(score>=85&&score<=100){
+                grade="A";
             }
+            else if(score>=70&&score<=84){
+                grade="B";
+            }
+            else if(score>=60&&score<=69){
+                grade="C";
+            }
+            if(score>=50&&score<=59){
+                grade="D";
+            }
+            if(score>=0&&score<=49){
+                grade="F";
+            }
+
+            if(score>=60){
+                status="Pass";
+            }
+            else if(score<60){
+                status="Fail";
+            }
+            avg+=score;
+            if(score>max){
+                max=score;
+            }
+            if(status.equals("Pass")){
+                count++;
+            }
+            else{
+                count1++;
+            } 
+            
+            System.out.println("Student: "+name);
+            System.out.println("Score: "+score);
+            System.out.println("letter grade: "+grade);
+            System.out.println("status: "+status);
+                 System.out.println();
+
         }
-        System.out.println("Credit Score: " + creditScore);
-        System.out.println("Annual Income: $" + annualIncome);
-        System.out.println("Debt-to-Income Ratio: " + debtRatio + "%");
-        System.out.println("Loan Type: " + loanType);
-        System.out.println("Decision: " + decision);
-        System.out.println("Maximum Loan Amount: $" + maxLoanAmount);
+        double sum=avg/n;
+        System.out.println("total students: "+n);
+        System.out.println("class avg: "+sum);
+        System.out.println("highest score: "+max);
+        System.out.println("students passed: "+count);
+        System.out.println("students failed: "+count1);
+
     }
 }
