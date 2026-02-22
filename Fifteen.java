@@ -10,13 +10,13 @@ public class Fifteen {
 
         double base=0.0;
         if(license.equals("standard")){
-            base=60.0;
+            base=60;
         }
          if(license.equals("professional")){
-            base=120.0;
+            base=120;
         }
          if(license.equals("enterprice")){
-            base=200.0;
+            base=200;
         }
 
         int discount=0;
@@ -92,3 +92,4 @@ public class Fifteen {
 
     }
 }
+
