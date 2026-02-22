@@ -1,85 +1,52 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Three {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int age=sc.nextInt();
-        String smoke=sc.next();
-        String condition=sc.next();
-        String cover=sc.next();
-        String first="basic";
-        String second="standard";
-        String third="premium";
-        double base=0.0;
-        double risk=0.0;
-        if(age>=18&&age<=30){
-            if(cover.equals(first)){
-                base=200;
-            }
-            else if(cover.equals(second)){
-                base=300;
-            }
-            else if(cover.equals(third)){
-                base=500;
-            }
-        }
-        else if(age>30&&age<51){
-            if(cover.equals(first)){
-                base=250;
-            }
-            else if(cover.equals(second)){
-                base=350;
-            }
-            else if(cover.equals(third)){
-                base=600;
-            }
-        }
-        else if(age>50&&age<=65){
-            if(cover.equals(first)){
-                base=350;
-            }
-            else if(cover.equals(second)){
-                base=450;
-            }
-            else if(cover.equals(third)){
-                base=700;
-            }
-        }
-        else{
-            if(cover.equals(first)){
-                base=400;
-            }
-            else if(cover.equals(second)){
-                base=550;
-            }
-            else if(cover.equals(third)){
-                base=800;
-            }
-        }
-        if(smoke.equalsIgnoreCase("smoke")){
-            if(condition.equals("yes")){
-                risk= base *0.70;
-            }
-            else{
-                risk=base *0.40;
-            }
-        }
-        else{
-            if(condition.equals("yes")){
-                risk=base *0.30;
-            }
-            else{
-                risk=0;
-            }
-        }
-        double total =base+risk;
+        int n=sc.nextInt();
+        String status="";
+        double quantity=0;
+        int count=0;
+        int count1=0;
+        int sum=0;
+        for(int i=1;i<=n;i++){
+            String product=sc.next();
+            int current=sc.nextInt();
+            int minimum=sc.nextInt();
 
-        System.out.println("Age: "+age);
-        System.out.println("Smoking Status: "+smoke);
-        System.out.println("Condition: "+condition);
-        System.out.println("Coverage tier: "+cover);
-        System.out.println("Base premium: "+base);
-        System.out.println("Risk Surcharge: "+risk);
-        System.out.println("Total: "+total);
+           if(current>=minimum){
+            status="Adequate";
+           } 
+           else if(current<minimum&&current>=(minimum/2)){
+            status="Low stock";
+            count++;
+           }
+           else if(current<(minimum/2)){
+            status="Critical";
+            count1++;
+           }
+
+           if(status.equals("Adequate")){
+            quantity=0;
+           }
+           else if(status.equals("Low stock")){
+            quantity=((minimum-current)*2);
+           }
+           else if(status.equals("Critical")){
+            quantity=(minimum-current)*2;
+           }
+            System.out.println("product: "+product);
+            System.out.println("current stock: "+current);
+            System.out.println("minimum stock: "+minimum);
+            System.out.println("status: "+status);
+            System.out.println("reorder quantity: "+quantity);
+             System.out.println();
+             sum+=quantity;
+        }
+
+        System.out.println("total products: "+n);
+        System.out.println("low stock items: "+count);
+        System.out.println("critical items: "+count1);
+        System.out.println("total reorder quantity: "+sum);
     }
 }
