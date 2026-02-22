@@ -6,10 +6,11 @@ public class Operatoreight {
         int age=sc.nextInt();
         int id=sc.nextInt();
         if(age>=18&&id==1){
-            System.out.println("Approved");
+            System.out.println("Approved.");
         }
         else{
-            System.out.println("Denied");
+            System.out.println("Denied.");
         }
     }
 }
+
