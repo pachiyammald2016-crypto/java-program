@@ -61,7 +61,7 @@ public class Nine {
         if(net<0){
             net=0;
         }
-        double effective=(net/annual)*100;
+        double effective=(net/annual)*100.0;
 
         System.out.println("annual revenue: "+"$"+annual);
         System.out.println("business type: "+business);
@@ -75,3 +75,4 @@ public class Nine {
 
     }
 }
+
