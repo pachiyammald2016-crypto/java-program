@@ -89,7 +89,7 @@ public class Four {
         }
         double num=bonus+discount;
         double num1=num+total;
-        double price=cartvalue*(1-num1/100);
+        double price=cartvalue*(1-num1/100.0);
         double savings=cartvalue-price;
         System.out.println("loyalty: "+loyalty);
         System.out.println("cart value: "+cartvalue);
@@ -102,3 +102,4 @@ public class Four {
         System.out.println("savings: "+"$"+savings);
     }
 }
+
