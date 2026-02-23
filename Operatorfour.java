@@ -7,11 +7,12 @@ public class Operatorfour {
         int purchase=sc.nextInt();
         int block=sc.nextInt();
         if(purchase<=credit&&block==0){
-            System.out.println("Approved");
+            System.out.println("Approved.");
         }
         else{
-            System.out.println("Declined");
+            System.out.println("Declined.");
         }
     }
     
 }
+
