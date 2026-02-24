@@ -8,7 +8,7 @@ public class Twenteone {
         String vehicle=sc.next();
         String membership=sc.next();
 
-        double baserate=5.00;
+        double baserate=5.0;
         int zonepremium=0;
         if(location.equals("downtown")){
             zonepremium=50;
@@ -111,3 +111,4 @@ else{
         
     }
 }
+
