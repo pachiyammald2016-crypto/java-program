@@ -87,4 +87,5 @@ public class Twentetwo{
         System.out.println("Total Bill: $" + totalBill);
         System.out.println("Average Rate: $" +averageRate + "/kWh");
     }
+
 }
