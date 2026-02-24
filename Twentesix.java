@@ -18,3 +18,4 @@ public class Twentesix {
         System.out.println(num5);
     }
 }
+
