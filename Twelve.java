@@ -7,7 +7,7 @@ public class Twelve {
     String vehicletype=sc.next();
     String record=sc.next();
     String coverage=sc.next();
-    double basepremium=0.0;
+    double basepremium=0;
     if(coverage.equals("basic")){
         basepremium=500.0;
     }
@@ -83,3 +83,4 @@ public class Twelve {
 
    } 
 }
+
