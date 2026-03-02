@@ -1,78 +1,65 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Nine {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        double annual=sc.nextDouble();
-        String business=sc.next();
-        double expenses=sc.nextDouble();
-        double tax=sc.nextDouble();
-        double value=annual-expenses;
-        double number=0.0;
-        if(business.equals("c-corp")){
-        if(value<500000){
-            number=21;
-        }
-        else if(value>500000&&value<=1000000){
-            number=24;
-        }
-        else if(value>1000000&&value<=2000000){
-            number=28;
-        }
-        else if(value>2000000){
-            number=30;
-        }
-        }
-        else if(business.equals("S-crop")){
-            if(value<500000){
-                number=20;
-            }
-            else if(value>500000&&value<=1000000){
-                number=25;
-            }
-            else if(value>1000000){
-                number=28;
-            }
-        }
-        else if(business.equals("llc")){
-            if(value<200000){
-                number=20;
-            }
-            else if(value>200000&&value<=500000){
-                number=18;
-            }
-            else if(value>500000){
-                number=22;
-            }
-        }
-        else if(business.equals("partnership")){
-            if(value<300000){
-                number=18;
-            }
-            else if(value>300000&&value<=800000){
-                number=22;
-            }
-            else if(value>800000){
-                number=26;
-            }
-        }
-        double gross=value*(number/100.0);
-        double net=gross-tax;
-        if(net<0){
-            net=0;
-        }
-        double effective=(net/annual)*100.0;
-
-        System.out.println("annual revenue: "+"$"+annual);
-        System.out.println("business type: "+business);
-        System.out.println("expenses: "+"$"+expenses);
-        System.out.println("tax credits: "+"$"+tax);
-        System.out.println("taxable income: "+"$"+value);
-        System.out.println("tax rate: "+number+"%");
-        System.out.println("gross tax: "+"$"+gross);
-        System.out.println("net tax: "+"$"+net);
-        System.out.println("effective tax:%.2f%"+effective+"%");
-
-    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int burned=0;
+		int total=0;
+		int num=0;
+		String inten="";
+		for(int i=1;i<=n;i++) {
+			String type=sc.next();
+			int duration =sc.nextInt();
+			int calorie=0;
+			if(type.equals("running")) {
+				calorie=10;
+				inten="high";
+				burned=duration*calorie;
+			}
+			else if(type.equals("swimming")) {
+				calorie=12;
+				inten="high";
+				burned=duration*calorie;
+			}
+			else if(type.equals("cycling")) {
+				calorie=8;
+				inten="moderate";
+				burned=duration*calorie;
+			}
+			else if(type.equals("gym")) {
+				calorie=7;
+				inten="moderate";
+				burned=duration*calorie;
+			}
+			else if(type.equals("walking")) {
+				calorie=4;
+				inten="low";
+				burned=duration*calorie;
+			}
+			total+=duration;
+			num+=burned;
+			System.out.println("session:"+ i+":"+type);
+			System.out.println("duration: "+duration+" minutes");
+			System.out.println("calories burned: "+burned);
+			System.out.println("intensity: "+inten);		
+		}
+		double avg=num/n;
+		String level="";
+		if(num<300) {
+			level="biginner";
+		}
+		else if(num>=300&&num<=1000) {
+			level="intermediate";
+		}
+		else {
+			level="advanced";
+		}
+		System.out.println("total workouts: "+n);
+		System.out.println("total duration: "+total);
+		System.out.println("total calorie: "+num);
+		System.out.println("avg calorie: "+avg);
+		System.out.println("fitness level: "+level);
+		
+	}
 }
-
