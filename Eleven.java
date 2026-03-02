@@ -1,98 +1,56 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Eleven {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        String order=sc.next();
-        String loyalty=sc.next();
-        double value=sc.nextDouble();
-        String time=sc.next();
-        int base=0;
-        if(loyalty.equals("gold")){
-            base=15;
-        }
-        else if(loyalty.equals("silver")){
-            base=10;
-        }
-        else if(loyalty.equals("bronze")){
-            base=5;
-        }
-        else if(loyalty.equals("none")){
-            base=0;
-        }
-        int adjust=0;
-        if(time.equals("peak")){
-            adjust=0;
-        }
-        else if(time.equals("regular")){
-            adjust=0;
-        }
-        else if(time.equals("late-night")){
-            adjust=5;
-        }
-        double sum=adjust+base;
-        double number=0.0;
-        if(order.equals("delivery")){
-            number=value*0.10;
-        }
-        else if(order.equals("takeout")){
-            number=value*0.03;
-        }
-        else if(order.equals("dine-in")){
-            number=value*0.0;
-        }
-
-        double discount=value*(1-sum/100.0);
-        double amount=discount+number;
-        String sum2="none";
-        if(time.equals("peak")&&order.equals("delivery")){
-            sum2="high";
-        }
-        else if(time.equals("regular")){
-            sum2="medium";
-        }
-        else if(time.equals("late-night")){
-            sum2="low";
-        }
-        int prep=0;
-        if (order.equalsIgnoreCase("delivery")) {
-            if (sum2.equals("high"))
-            prep=40;
-            else if (sum2.equals("medium"))
-            prep=30;
-            else
-            prep=25;
-        }
-        else if (order.equalsIgnoreCase("takeout")) {
-            if (sum2.equals("high"))
-                prep=30;
-            else if (sum2.equals("medium"))
-                prep=20;
-            else
-                prep=15;
-        }
-        else if(order.equals("dine-in")){
-            if (sum2.equals("high"))
-                prep=35;
-            else if (sum2.equals("medium"))
-                prep=25;
-            else {
-                prep=20;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        double originalTotal = 0.0;
+        double totalDiscount = 0.0;
+        double finalTotal = 0.0;
+        for (int i = 1; i <= n; i++) {
+            String seattype = sc.next();
+            String customer = sc.next();
+            double price = 0.0;
+            double discountPercent = 0.0;
+            if (seattype.equalsIgnoreCase("Regular")) {
+                price = 12.0;
+            } 
+            else if (seattype.equalsIgnoreCase("Premium")) {
+                price = 18.0;
+            } 
+            else if (seattype.equalsIgnoreCase("Recliner")) {
+                price = 25.0;
             }
+            if (customer.equalsIgnoreCase("Adult")) {
+                discountPercent = 0.0;
+            } 
+            else if (customer.equalsIgnoreCase("Child")) {
+                discountPercent = 30.0;
+            } 
+            else if (customer.equalsIgnoreCase("Senior")) {
+                discountPercent = 25.0;
+            }
+            double discountAmount = price * discountPercent / 100;
+            double finalPrice = price - discountAmount;
+            originalTotal += price;
+            totalDiscount += discountAmount;
+            finalTotal += finalPrice;
+            System.out.println("Ticket " + i + ": " + seattype + " - " + customer);
+            System.out.println("Base Price: $" + price);
+            System.out.println("Discount: " + (int)discountPercent + "%");
+            System.out.println("Final Price: $" + finalPrice);
+            System.out.println();
         }
-
-        System.out.println("order type: "+order);
-        System.out.println("loyalty: "+loyalty);
-        System.out.println("Order value: "+value);
-        System.out.printf("time slot: "+time);
-        System.out.println("base discount: " +base+ "%");
-        System.out.println("time-based adjustment: "+adjust);
-        System.out.printf("Service Fee: $%.2f\n",number);
-        System.out.printf("Final Amount: $%.2f\n",amount);
-        System.out.println("Kitchen Priority: " + sum2);
-        System.out.println("Estimated Preparation Time: "+prep+" minutes");
-
-
+        boolean groupDiscountApplied = false;
+        if (n >= 5) {
+            groupDiscountApplied = true;
+            double groupDiscount = finalTotal * 0.10;
+            finalTotal -= groupDiscount;
+        }
+        System.out.println("Total Tickets: " + n);
+        System.out.println("Original Total: $" + originalTotal);
+        System.out.println("Total Discount: $" + totalDiscount);
+        System.out.println("Final Total: $" + finalTotal);
+        System.out.println("Group Discount Applied: " + (groupDiscountApplied ? "Yes" : "No"));
     }
 }
-
