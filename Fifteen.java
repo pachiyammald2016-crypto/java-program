@@ -1,95 +1,47 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Fifteen {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int usercount=sc.nextInt();
-        String license=sc.next();
-        String support=sc.next();
-        int contract=sc.nextInt();
+        int n=sc.nextInt();
+        String num="";
+        int count1=0;
+        int count2=0;
+        int highest=0;
+        int sum=0;
+        int max=0;
+        for(int i=0;i<n;i++){
+            String name=sc.next();
+            int answers=sc.nextInt();
+            int wrong=sc.nextInt();
+            int attempt=sc.nextInt();
 
-        double base=0.0;
-        if(license.equals("standard")){
-            base=60;
-        }
-         if(license.equals("professional")){
-            base=120;
-        }
-         if(license.equals("enterprice")){
-            base=200;
-        }
+            int score=(answers*4)-(wrong*3)+(attempt*0);
+            if(score>=32){
+                num="pass";
+                count1++;
+            }
+            else{
+                num="fail";
+                count2++;
+            }
+            if(score>max){
+                max=score;
+            }
+            sum+=score;
+            System.out.println("student: "+name);
+            System.out.println("correct: "+answers);
+            System.out.println("wrong: "+wrong);
+            System.out.println("attempt: "+attempt);
+            System.out.println("score: "+score);
+            System.out.println("result: "+num);
 
-        int discount=0;
-        if(usercount>=1&&usercount<=50){
-            discount=0;
         }
-         if(usercount>=51&&usercount<=200){
-            discount=15;
-        }
-         if(usercount>=201&&usercount<=500){
-            discount=20;
-        }
-         if(usercount>=501&&usercount<=1000){
-            discount=25;
-        }
-         if(usercount>=1001){
-            discount=35;
-        }
-        double fee=0.0;
-        if(support.equals("basic")){
-            fee=10;
-        }
-        if(support.equals("priority")){
-            fee=30;
-        }
-        if(support.equals("premium")){
-            fee=80;
-        }
-        int fees=0;
-        if(contract==1){
-            fees=0;
-        }
-        if(contract==2){
-            fees=5;
-        }
-        if(contract==3){
-            fees=10;
-        }
-        if(contract==5){
-            fees=20;
-        }
-
-        double price=base*(1-discount/100.0);
-        double annual =(price+fee)*(1-fees/100.0);
-        double totalannual=annual*usercount;
-        double contractvalue=totalannual*contract;
-
-        String pricing="none";
-        if(usercount<200){
-            pricing="small business";
-        }
-        else if(usercount<=1000){
-            pricing="mid-market";
-        }
-        else{
-            pricing="enterprice";
-        }
-
-        System.out.println("user count: "+usercount);
-        System.out.println("license typr: "+license);
-        System.out.println("support level: "+support);
-        System.out.println("contract duration: "+contract);
-        System.out.println("base price per user: "+"$"+base);
-        System.out.println("volume discount: "+discount+"%");
-        System.out.println("support fee: "+"$"+fee);
-        System.out.println("multi-year discount: "+fees+"%");
-        System.out.println("annual cost: "+"$"+annual);
-        System.out.println("total annual: "+"$"+totalannual);
-        System.out.println("total contract value: "+"$"+contractvalue);
-         System.out.println("pricing tier: "+pricing);
-
-
-
+        double avg=sum/n;
+        System.out.println("total students: "+n);
+        System.out.println("pass count: "+count1);
+        System.out.println("fail count: "+count2);
+        System.out.println("class average: "+avg);
+        System.out.println("highest score: "+max);
     }
 }
-
