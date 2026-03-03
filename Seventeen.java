@@ -1,83 +1,57 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Seventeen {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        String cardtier=sc.next();
-        String purchase=sc.next();
-        double transaction=sc.nextDouble();
-        String status=sc.next();
+        int n=sc.nextInt();
+        int discount=0;
+        String priority="";
+        int count=0;
+        double total=0.0;
 
-        double basepoint=1.0;
-        double bonus=0.0;
-        if(purchase.equals("groceries")){
-            bonus=2.0;
-        }
-        if(purchase.equals("dining")){
-            bonus=2.5;
-        }
-        if(purchase.equals("travel")){
-            bonus=3.0;
-        }
-        if(purchase.equals("gas")){
-            bonus=2.0;
-        }
-        if(purchase.equals("other")){
-            bonus=1.0;
-        }
+        for(int i=1;i<=n;i++){
+            String name=sc.next();
+            String type=sc.next();
+            int days=sc.nextInt();
+            double fee=0.0;
+            if(type.equals("basic")){
+                fee=50;
+            }
+            else if(type.equals("premium")){
+                fee=100;
+            }
+            else if(type.equals("VIP")){
+                fee=200;
+            }
 
-        double multiplier=0.0;
-        if(cardtier.equals("basic")){
-            multiplier=1.0;
-        }
-        if(cardtier.equals("gold")){
-            multiplier=1.25;
-        }
-        if(cardtier.equals("platinum")){
-            multiplier=1.5;
-        }
-        if(cardtier.equals("black")){
-            multiplier=2.0;
-        }
+            if(days>=45){
+                discount=20;
+            }
+            else if(days>=30&&days<=44){
+                discount=15;
+            }
+            else if(days>=15&&days<=29){
+                discount=10;
+            }
+            else if(days<15){
+                discount=0;
+            }
 
-        double promotion=0.0;
-        if(status.equals("none")){
-            promotion=1.0;
-        }
-        if(status.equals("double-points")){
-            promotion=2.0;
-        }
-        if(status.equals("triple-points")){
-            promotion=3.0;
-        }
+            if(days<10){
+                priority="urgent";
+                count++;
+            }
+            else if(days>=10&&days<=30){
+                priority="high";
+            }
+            else if(days>30){
+                priority="normal";
+            }
 
-        double pointsearned=transaction*basepoint*bonus*multiplier*promotion;
-        double cashvalue=pointsearned*0.01;
-
-        String rewards="none";
-        if(cardtier.equals("basic")){
-            rewards="standard";
+            double finalfee=fee*(1-discount/100.0);
+            total+=finalfee;
         }
-        if(cardtier.equals("gold")){
-            rewards="enhanced";
-        }
-        if(cardtier.equals("platinum")){
-            rewards="premium";
-        }
-        if(cardtier.equals("black")){
-            rewards="elite";
-        }
-
-        System.out.println("card tier: "+cardtier);
-        System.out.println("purchase category: "+purchase);
-        System.out.println("transaction amount: "+"$"+transaction);
-        System.out.println("promotional status: "+status);
-        System.out.println("base points rate: "+basepoint+" points per dollar");
-        System.out.println("category bonus: "+bonus+"x");
-        System.out.println("tier multiplier: "+multiplier+"x");
-        System.out.println("promotional multiplier: "+promotion+"x");
-        System.out.println("points earned: "+pointsearned);
-        System.out.println("equivalent cash value: "+"$"+cashvalue);
-        System.out.println("rewards tier: "+rewards);
+        
     }
+    
 }
