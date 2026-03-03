@@ -1,101 +1,54 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
-public class Ninteen {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        String movie=sc.next();
-        String showtime=sc.next();
-        String seat=sc.next();
-        String customer=sc.next();
+public class Ninteen{
+  public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+        int count1=0;
+        int count2=0;
+        int count3=0;
+    for(int i=0;i<n;i++){
+        String id=sc.next();
+        String type=sc.next();
+        int month=sc.nextInt();
 
-        double baseticket=12;
-        double format=0.0;
-        if(movie.equals("2D")){
-            format=0;
+        int waranty=0;
+        int remaining=0;
+        String status="";
+        if(type.equals("electronics")){
+            waranty=12;
         }
-        if(movie.equals("3D")){
-            format=5;
+        else if(type.equals("appliance")){
+            waranty=24;
         }
-        if(movie.equals("IMAX")){
-            format=8;
+        else if(type.equals("computer")){
+            waranty=36;
         }
-        if(movie.equals("4D")){
-            format=10;
+        remaining=waranty-month;
+        if(remaining==0){
+            status="expired";
+            count1++;
         }
-        double fee=0.0;
-        if(seat.equals("standard")){
-            fee=0;
+        else if(remaining>=1&&remaining<=3){
+            status="expired soon";
+            count2++;
         }
-        if(seat.equals("premium")){
-            fee=4;
-        }
-        if(seat.equals("recliner")){
-            fee=7;
-        }
-        int time=0;
-        if(showtime.equals("matinee")){
-            time=-30;
-        }
-         if(showtime.equals("evening")){
-            time=0;
-        }
-         if(showtime.equals("prime-time")){
-            time=20;
-        }
-         if(showtime.equals("late-night")){
-            time=-20;
-        }
-        int discount=0;
-        if(customer.equals("adult")){
-            discount=0;
-        }
-        if(customer.equals("senior")){
-            discount=25;
-        }
-        if(customer.equals("student")){
-            discount=15;
-        }
-        if(customer.equals("child")){
-            discount=30;
+        if(remaining>3){
+            status="active";
+            count3++;
         }
 
-        double base=baseticket+format+fee;
-        double adjusted=base*(1+time/100.0);
-        double finalprice=adjusted*(1-discount/100.0);
-        String cons="none";
-        if(showtime.equals("matinee")||customer.equals("senior")
-            ||customer.equals("student")){
-                    cons="yes";
-                }
-                else {
-                    cons="no";
-                }
-        String category="none";
-        if(finalprice<=20){
-            category="value";
-        }
-         if(finalprice>20&&finalprice<=30){
-            category="premium";
-        }
-         if(finalprice>30){
-            category="luxury";
-        }
-
-        System.out.println("movie format: "+movie);
-        System.out.println("show time: "+showtime);
-        System.out.println("seat category: "+seat);
-        System.out.println("customer type: "+customer);
-        System.out.println("base ticket price: "+"$"+baseticket);
-        System.out.println("format surcharge: "+"$"+format);
-        System.out.println("seat upgrade fee: "+"$"+fee);
-        System.out.println("time-based adjustment: "+time+"%");
-        System.out.println("customer discount: "+discount+"%");
-        System.out.println("final ticket price: "+"$"+finalprice);
-        System.out.println("concession voucher: "+cons);
-        System.out.println("pricing category: "+category);
-
-        
-
-
+        System.out.println("product ID: "+id);
+        System.out.println("type: "+type);
+        System.out.println("warrenty period: "+waranty);
+        System.out.println("months used: "+month);
+        System.out.println("remaining: "+remaining);
+        System.out.println("status: "+status);
     }
+
+    System.out.println("total products: "+n);
+    System.out.println("active warrenties: "+count3);
+    System.out.println("expiring warenty: "+count2);
+    System.out.println("expired warrenties: "+count1);
+}
 }
