@@ -1,103 +1,70 @@
-package Ifelse;
+package For;
 import java.util.Scanner;
 public class Sixteen {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        String room=sc.next();
-        String season=sc.next();
-        int nightbooked=sc.nextInt();
-        String loyalty=sc.next();
+        int n=sc.nextInt();
+        double fee=0.0;
+        double discount=0.0;
+        String num="";
+        double finalfee=0.0;
+        int count=0;
+        double sum=0.0;
+        for(int i=0;i<n;i++){
+            String name=sc.next();
+            String type=sc.next();
+            int expiry=sc.nextInt();
 
-        double baserate=0.0;
-        if(room.equals("standard")){
-            baserate=150;
-        }
-        if(room.equals("delux")){
-            baserate=300;
-        }
-        if(room.equals("suite")){
-            baserate=500;
-        }
-        if(room.equals("presidential")){
-            baserate=1000;
-        }
+            if(type.equals("basic")){
+                fee=50;
+            }
+            else if(type.equals("premium")){
+                fee=100;
+            } 
+            else if(type.equals("VIP")){
+                fee=200;
+            }
 
-        double multiplier=0.0;
-        if(season.equals("off-peak")){
-            multiplier=0.7;
-        }
-         if(season.equals("regular")){
-            multiplier=1.0;
-        }
-         if(season.equals("peak")){
-            multiplier=1.5;
-        }
-         if(season.equals("holiday")){
-            multiplier=2.0;
-        }
+            if(expiry>=45){
+                discount=20;
+            }
+            else if(expiry>=30&&expiry<=44){
+                discount=15;
+            }
+            else if(expiry>=15&&expiry<=29){
+                discount=10;
+            }
+            else if(expiry<15){
+                discount=0;
+            }
 
-        int staydiscount=0;
-        if(nightbooked>=1&&nightbooked<=4){
-            staydiscount=0;
-        }
-        if(nightbooked>=5&&nightbooked<=7){
-            staydiscount=5;
-        }
-        if(nightbooked>=8&&nightbooked<=14){
-            staydiscount=10;
-        }
-        if(nightbooked>=15){
-            staydiscount=20;
-        }
+            if(expiry<10){
+                num="urgent";
+                count++;
+            }
+            else if(expiry>10&&expiry<=30){
+                num="high";
+            }
+            else if(expiry>30){
+                num="normal";
+            }
+            finalfee=fee*(1-discount/100.0);
+            sum+=finalfee;
+            System.out.println("member: "+name);
+            System.out.println("membership: "+type);
+            System.out.println("days expiry: "+expiry);
+            System.out.println("renewal fee: "+fee);
+            System.out.println("discount: "+discount);
+            System.out.println("final fee: "+finalfee);
+            System.out.println("priority: "+num);
 
-        int total=0;
-        if(loyalty.equals("none")){
-            total=0;
         }
-         if(loyalty.equals("member")){
-            total=10;
-        }
-         if(loyalty.equals("gold")){
-            total=15;
-        }
-         if(loyalty.equals("platinum")){
-            total=20;
-        }
+        double avg=sum/n;
+         
+        System.out.println("total members: "+n);
+        System.out.println("urgent renewals: "+count);
+        System.out.println("total renewal revenue: "+sum);
+        System.out.println("average renewal fee: "+avg);
 
-        double seasonalrate=baserate*multiplier;
-        double discountedrate=seasonalrate*(1-staydiscount/100.0)*(1-total/100.0);
-        double totalcost=discountedrate*nightbooked;
-
-        String upgrades="none";
-        if(room.equals("delux")&&loyalty.equals("none")){
-            upgrades="none";
-        }
-        if(room.equals("suite")&&loyalty.equals("member")){
-            upgrades="free breakfast";
-        }
-        if(room.equals("presidential")&&loyalty.equals("platinum")){
-            upgrades="concierge service,airport transfer,and fine";
-        }
-        if(room.equals("standard")&&loyalty.equals("none")){
-            upgrades="none";
-        }
-        if(room.equals("delux")&&loyalty.equals("gold")){
-            upgrades="free breakfast and spa access";
-        }
-
-        System.out.println("room category: "+room);
-        System.out.println("season: "+season);
-        System.out.println("nights booked: "+nightbooked);
-        System.out.println("loyalty tier: "+loyalty);
-        System.out.println("base rate per night: "+"$"+baserate);
-        System.out.println("seasonal multiplier: "+multiplier+"x");
-        System.out.println("extended stay discount: "+staydiscount+"%");
-        System.out.println("loyalty discount: "+total+"%");
-        System.out.println("nightly rate: "+"$"+discountedrate);
-        System.out.println("total booking cost: "+"$"+totalcost);
-        System.out.println("complimentary upgrades: "+upgrades);
-
-
-        
     }
 }
