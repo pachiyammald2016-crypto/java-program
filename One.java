@@ -1,28 +1,28 @@
-package While;
+package Array;
 import java.util.Scanner;
 public class One {
-   public static void main(String[] args){
-    Scanner sc=new Scanner(System.in);
-    String n=sc.nextLine();
-    int count=3;
-    while(count>0){
-        System.out.println("Enter password: ");
-        String s=sc.nextLine();
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        double[] arr=new double[size];
+        int sum=0;
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextDouble();
+            sum+=arr[i];
+        }
+        double avg=sum/size;
+        int count=0;
+        for(int j=0;j<size;j++){
+            if(arr[j]>avg){
+                count++;
+            }
+        }
+        double percent=(double)count/size;
+        double total=percent*100.0;
 
-        if(s.equals(n)){
-            System.out.println("Access granted!");
-            break;
-        }
-        else{
-            count--;
-            if(count>0){
-                System.out.println("Incorrect attempts! remaining: "+count);
-            }
-            else{
-                System.out.println("Account locked!");
-            }
-        }
+        System.out.println("Total Employees: "+size);
+        System.out.printf("Average Salary:%.2f\n",avg);
+        System.out.println("Employees above Average: "+count);
+        System.out.printf("Percentage:%.2f%%\n",total);
     }
-
-   } 
 }
