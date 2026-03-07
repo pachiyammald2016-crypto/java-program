@@ -1,26 +1,32 @@
-package While;
+package Array;
 import java.util.Scanner;
 public class Six {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int m=sc.nextInt();
-        int rem=0;
-        do {
-            System.out.print("Enter amount (0 to exit): ");
-            m = sc.nextInt();
-
-            if(m == 0) {
-                System.out.println("Transaction ended.");
+        int size=sc.nextInt();
+        double[] arr=new double[size];
+        double sum=0.0;
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextDouble();
+            sum+=arr[i];
+        }
+        int count=0;
+        double avg=(double)sum/size;
+        for(int i=0;i<size;i++){
+            if(arr[i]>avg){
+                count++;
             }
-            else if(m > n){
-                System.out.println("Insufficient funds! Try again.");
+        }
+        System.out.println("Fraud Alert Indices: ");
+        System.out.print("[");
+        for(int i=0;i<size;i++){
+            if(arr[i]>avg){
+              System.out.print(i);
+              if(i<size-2){
+              System.out.print(", ");  
+              }
             }
-            else{
-                n = n - m;
-                System.out.println("Withdrawal successful! Remaining balance: " + n);
-            }
-
-        } while(m != 0);
+        }
+        System.out.print("]");
     }
 }
