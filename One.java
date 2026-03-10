@@ -1,28 +1,38 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class One {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int size=sc.nextInt();
-        double[] arr=new double[size];
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int[][] arr=new int[n][m];
         int sum=0;
-        for(int i=0;i<size;i++){
-            arr[i]=sc.nextDouble();
-            sum+=arr[i];
-        }
-        double avg=sum/size;
-        int count=0;
-        for(int j=0;j<size;j++){
-            if(arr[j]>avg){
-                count++;
+        int avg=0;
+        System.out.println("Student average: ");
+        for(int i=0;i<n;i++){
+            sum=0;
+            System.out.print("Student "+i+": ");
+            for(int j=0;j<m;j++){
+                arr[i][j]=sc.nextInt();
+                sum+=arr[i][j];
             }
+            avg=sum/m;
+            System.out.print(avg*100);
+            System.out.println();
         }
-        double percent=(double)count/size;
-        double total=percent*100.0;
-
-        System.out.println("Total Employees: "+size);
-        System.out.printf("Average Salary:%.2f\n",avg);
-        System.out.println("Employees above Average: "+count);
-        System.out.printf("Percentage:%.2f%%\n",total);
+        int num=0;
+        int count=0;
+        System.out.println();
+        System.out.println("Subject averages: ");
+        for(int r=0;r<m;r++){
+            count=0;
+            System.out.print("student "+r+": ");
+            for(int s=0;s<n;s++){
+                count+=arr[s][r];
+            }
+            num=count/n;
+            System.out.print(num*100);
+            System.out.println();
+        }
     }
 }
