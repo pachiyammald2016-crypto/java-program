@@ -1,28 +1,32 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Nine {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        double[] arr=new double[n];
-        double min=Double.MAX_VALUE;
-        double max=Double.MIN_VALUE;
-        double sum=0.0;
+        int m=sc.nextInt();
+        int[][] arr=new int[n][m];
+        int max=Integer.MIN_VALUE;
+        int min=Integer.MAX_VALUE;
+        System.out.println("Elevation map: ");
         for(int i=0;i<n;i++){
-            arr[i]=sc.nextDouble();
-            sum+=arr[i];
-            if(arr[i]>max){
-                max=arr[i];
+            for(int j=0;j<m;j++){
+                arr[i][j]=sc.nextInt();
+                System.out.print(arr[i][j]+" ");
+                if(arr[i][j]>max){
+                    max=arr[i][j];
+                }
+                if(arr[i][j]<min){
+                    min=arr[i][j];
+                }
             }
-            if(arr[i]<min){
-                min=arr[i];
-            }
+            System.out.println();
         }
-        double avg=(double)sum/n;
-        System.out.println("Total Score: "+n);
-        System.out.printf("Highest Sales:$%.2f\n",max);
-        System.out.printf("Lowest Sales:$%.2f\n",min);
-        System.out.printf("Total Sales:$%.2f\n",sum);
-        System.out.printf("Average Sales:$%.2f",avg);
+        System.out.println();
+        int range=max-min;
+        System.out.println("highest point: "+max+" m");
+        System.out.println("lowest point: "+min+" m");
+        System.out.println("elevation range: "+range+" m");
+
     }
 }
