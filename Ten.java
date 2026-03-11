@@ -1,35 +1,40 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Ten {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int[] arr=new int[n];
-        int min=Integer.MAX_VALUE;
-        int max=Integer.MIN_VALUE;
+        int m=sc.nextInt();
+        int[][] arr=new int[n][m];
         int sum=0;
-        int count=0;
+        System.out.println("sales matrix: ");
         for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-            if(arr[i]>max){
-                max=arr[i];
+            for(int j=0;j<m;j++){
+                arr[i][j]=sc.nextInt();
+                System.out.print(arr[i][j]+" ");
             }
-            if(arr[i]<min){
-                min=arr[i];
-            }
-            if(arr[i]>200){
-                count++;
-            }
+            System.out.println();
         }
-        double avg=(double)sum/n;
-        int num=n-count;
-        double total=((double)num/n)*100.0;
-        System.out.println("Total servers: "+n);
-        System.out.println("Fastest response: "+min+" ms");
-        System.out.println("Slowest response: "+max+" ms");
-        System.out.printf("Average response:%.2f ms\n",avg);
-        System.out.println("Slow Servers(>200ms): "+count);
-        System.out.printf("performance score:%.2f%%",total);
-
+        System.out.println();
+        System.out.println("representative totals: ");
+        for(int i=0;i<n;i++){
+            sum=0;
+            System.out.print("rep "+i+": ");
+            for(int j=0;j<m;j++){
+                sum+=arr[i][j];
+            }
+            System.out.println(sum);
+        }
+        System.out.println();
+        System.out.println("terrinary totals: ");
+        int sum2=0;
+        for(int i=0;i<m;i++){
+            sum2=0;
+            System.out.print("terrinary "+i+": ");
+            for(int j=0;j<n;j++){
+                sum2+=arr[j][i];
+            }
+            System.out.println(sum2);
+        }
     }
 }
