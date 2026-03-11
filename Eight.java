@@ -1,30 +1,33 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Eight {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int[] arr=new int[n];
-        int max=Integer.MIN_VALUE;
-        int sum=0;
-        int count=0;
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-            sum+=arr[i];
-            if(arr[i]>max){
-                max=arr[i];
-            }
-            if(arr[i]>60){
-                count++;
-            }
+   public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int s=sc.nextInt();
+    int[][] arr=new int[n][m];
+    System.out.println("original image: ");
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            arr[i][j]=sc.nextInt();
+            System.out.print(arr[i][j]+" ");
         }
-        double avg=(double)sum/n;
-        int total=n-count;
-        double num=((double)total/n)*100.0;
-        System.out.println("Total patients: "+n);
-        System.out.println("longest wait time: "+max+" minutes");
-        System.out.printf("Average wait time:%.2f Minutes\n",avg);
-        System.out.println("Patients waiting >60 min: "+count);
-        System.out.printf("Service level:%.2f%%",num);
+        System.out.println();
     }
+    System.out.println();
+    System.out.println("Adjusted image: ");
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(arr[i][j]<255){
+                arr[i][j]=arr[i][j]+s;
+            }
+            if(arr[i][j]>255){
+                arr[i][j]=255;
+            }
+            System.out.print(arr[i][j]+" ");
+        }
+        System.out.println();
+    }
+   } 
 }
