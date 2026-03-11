@@ -1,40 +1,42 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Twelve {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        double[] arr=new double[n];
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextDouble();
-        }
-        double limit=sc.nextDouble();
-        int index=0;
-        double max=0.0;
-        double sum=0.0;
-        for(int j=0;j<n;j++){
-            sum+=arr[j];
-            if(arr[j]>max){
-                max=arr[j];
-                index=j;
+        int[][] arr=new int[4][7];
+        for(int i=0;i<4;i++){
+            for(int j=0;j<7;j++){
+                arr[i][j]=sc.nextInt();
             }
         }
-        String r="";
-        double avg=(double)sum/n;
-        System.out.println("Hours Monitored: "+n);
-        System.out.printf("total daily consumption:%.2f kwh\n",sum);
-        System.out.print("peak hour: hour "+index);
-        System.out.printf("( %.2f kwh)\n",max);
-        System.out.printf("average hourly:%.2f kwh\n",avg);
-        System.out.printf("Daily limit:%.2f kwh\n",limit);
-        double t=(double)sum-limit;
-        if(sum<limit){
-            r="Within limit";
-            System.out.println("Status: "+r);
+        System.out.println("Rainfall data: ");
+        for(int i=0;i<4;i++){
+            for(int j=0;j<7;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
         }
-        else{
-            r="Exceeded by";
-            System.out.printf("Exceeded by %.2f kwh",t);
+
+        int sum=0;
+        int count=0;
+        int index=0;
+        int zero=0;
+        System.out.println("Weekly totals: ");
+        for(int i=0;i<4;i++){
+            sum=0;
+            System.out.print("Week "+(i+1)+": ");
+            for(int j=0;j<7;j++){
+                sum+=arr[i][j];
+            }
+            if(sum==0){
+                zero=sum;
+                index=i+1;
+            }
+            System.out.print(sum+" mm");
+            System.out.println();
+            count+=sum;
         }
+        System.out.println("monthly total: "+count+" mm");
+        System.out.println("Driest week: week "+index+" ("+zero+" mm)");
     }
 }
