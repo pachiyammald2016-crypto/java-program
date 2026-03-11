@@ -1,34 +1,39 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Seven {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int max=sc.nextInt();
-        int[] arr=new int[n];
-        int count=0;
+        int m=sc.nextInt();
+        int[][] arr=new int[n][m];
+        int sum=0;
+        System.out.println("inventary grid: ");
         for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-            if(arr[i]>max){
-                count++;
+            for(int j=0;j<m;j++){
+                arr[i][j]=sc.nextInt();
+                sum+=arr[i][j];
+                System.out.print(arr[i][j]+" ");
             }
+            System.out.println();
         }
-        int num=n-count;
-        double sum=((double)num/n)*100.0;
-        System.out.println("Production lines: "+n);
-        System.out.println("Acceptable Threshold: "+max);
-        System.out.println("lines exceeding threshold: "+count);
-        System.out.print("[");
-        for(int i=0;i<n;i++){
-            if(arr[i]>max){
-                System.out.print(i+1);
-                if(i<n-2){
-                System.out.print(", ");
-            }
-            }
-        }
-        System.out.print("]");
         System.out.println();
-        System.out.printf("Compliance rate:%.2f%%",sum);
+        System.out.println("total inventary: "+sum);
+
+        System.out.print("max stock zone: ");
+        int max=Integer.MIN_VALUE;
+        int index=0;
+        int index2=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(arr[i][j]>max){
+                    max=arr[i][j];
+                    index=i;
+                    index2=j;
+                }
+            }
+        }
+        int avg=sum/(n*m);
+        System.out.println("row "+index+", col "+index2+" ("+max+" units)");
+        System.out.println("avg stock per zone: "+avg);
     }
 }
