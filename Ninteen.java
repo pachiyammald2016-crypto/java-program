@@ -1,38 +1,33 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Ninteen {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int tar=sc.nextInt();
-        int[] arr=new int[n];
-        int sum=0;
-        int index=0;
-        int count=0;
-        int max=Integer.MIN_VALUE;
+        int[][] arr=new int[n][n];
         for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-            sum+=arr[i];
-            if(arr[i]>max){
-                max=arr[i];
-                index=i;
+            for(int j=0;j<n;j++){
+                arr[i][j]=sc.nextInt();
             }
         }
+        System.out.println("original image: ");
         for(int i=0;i<n;i++){
-            if(arr[i]<tar){
-                count++;
+            for(int j=0;j<n;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+        int[][] a=new int[n/2][n/2];
+        for(int i=0;i<n;i+=2){
+            for(int j=0;j<n;j+=2){
+                a[i/2][j/2]=arr[i][j];
             }
         }
-        double avg=(double)sum/n;
-        int num=n-count;
-        double total=((double)num/n)*100.0;
-        System.out.println("days tracked: "+n);
-        System.out.println("total calories burned: "+sum);
-        System.out.printf("avg daily burn: %.2f\n",avg);
-        System.out.print("peak burn: day "+index);
-        System.out.println("("+max+" calorie)");
-        System.out.println("days below target: "+count);
-        System.out.printf("goal acheivement: %.2f%%",total);
-
+        for(int i=0;i<n/2;i++){
+            for(int j=0;j<n/2;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
     }
 }
