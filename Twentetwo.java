@@ -1,52 +1,49 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Twentetwo {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        double[] arr=new double[n];
-        double max=Double.MIN_VALUE;
-        double min=Double.MAX_VALUE;
-        double sum=0.0;
-        int index=0;
-        int index1=0;
+        int m=sc.nextInt();
+        int[][] a = new int[n][m];
+        int top=0;
+        int bottom=n-1;
+        int left=0;
+        int right=m-1;
+        int num=1;
         for(int i=0;i<n;i++){
-            arr[i]=sc.nextDouble();
-            sum+=arr[i];
-            if(arr[i]>max){
-                max=arr[i];
-                index=i;
-            }
-            if(arr[i]<min){
-                min=arr[i];
-                index1=i;
-            }  
-        }
-        double avg=(double)sum/n;
-        System.out.println("total posts: "+n);
-        System.out.printf("average engagement: %.2f%%\n",avg);
-        System.out.printf("peak engagement: %.2f%%",max);
-        System.out.println("(post "+index+")");
-        System.out.printf("lowest engagement: %.2f%%",min);
-        System.out.println("(post "+index1+")");
-        double num=avg*2.0;
-        int index2=0;
-        for(int i=0;i<n;i++){
-            if(arr[i]>num){
-                index2++;
+            for(int j=0;j<m;j++){
+                a[i][j]=sc.nextInt();
             }
         }
-        System.out.println("viral posts(>200% avg): "+index2);
-        System.out.printf("viral threshold: %.2f%%\n",num);
-        System.out.print("top performance: [");
         for(int i=0;i<n;i++){
-            if(arr[i]>num){
-                System.out.print(i+1);
-                if(i<n-2){
-                    System.out.print(", ");
-                }
+            for(int j=0;j<m;j++){
+                System.out.print(a[i][j]+" ");
             }
+            System.out.println();
         }
-        System.out.print("]");
+        System.out.println();
+        while(top<=bottom&&left<=right){
+            for(int i=left;i<=right;i++){
+                System.out.print(a[top][i]+" ");
+            }
+             top++;
+            for(int i=top;i<=bottom;i++){
+               System.out.print( a[i][right]+" ");
+            }
+            right--;
+            if(top<=bottom){
+            for(int i=right;i>=left;i--){
+                System.out.print(a[bottom][i]+" ");
+            }
+            bottom--;
+        }
+        if(left<=right){
+            for(int i=bottom;i>=top;i--){
+                System.out.print(a[i][left]+" ");
+            }
+            left++;
+        }
+        }
     }
 }
