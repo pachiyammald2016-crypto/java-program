@@ -1,53 +1,55 @@
-package Array;
+package Array2;
 import java.util.Scanner;
 public class Twenteone {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        double[] arr=new double[n];
-        double sum=0.0;
-        double max=Double.MIN_VALUE;
-        double min=Double.MAX_VALUE;
-        int index1=0;
-        int index2=0;
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextDouble();
-            sum+=arr[i];
-            if(arr[i]>max){
-                max=arr[i];
-                index1=i+1;
-            }
-            if(arr[i]<min){
-                min=arr[i];
-                index2=i+1;
+        int r1=sc.nextInt();
+        int c1=sc.nextInt();
+        int[][] arr=new int[r1][c1];
+        for(int i=0;i<r1;i++){
+            for(int j=0;j<c1;j++){
+                arr[i][j]=sc.nextInt();
             }
         }
-        double avg=(double)sum/n;
-        System.out.println("fleet size: "+n);
-        System.out.printf("avg fuel efficiency:%.2f MPG\n",avg);
-        System.out.printf("most efficient:%.2f MPG",max);
-        System.out.println("(vehicle "+index1+")");
-        System.out.printf("least efficient:%.2f MPG",min);
-        System.out.println("(vehicle "+index2+")");
-        double num=avg*0.8;
-        int index3=0;
-        for(int i=0;i<n;i++){
-            if(arr[i]<num){
-                index3++;
+        int r2=sc.nextInt();
+        int c2=sc.nextInt();
+        int[][] a=new int[r2][c2];
+        for(int i=0;i<r2;i++){
+            for(int j=0;j<c2;j++){
+                a[i][j]=sc.nextInt();
             }
         }
-        System.out.println("underperforming vehicle: "+index3);
-        System.out.printf("efficiency threshold:%.2f MPG\n",num);
-        System.out.print("maintenance priority: [");
-        for(int i=0;i<n;i++){
-            if(arr[i]<num){
-                System.out.print(i);
-                if(i<n-2){
-                    System.out.print(", ");
-                }
+         int[][] am=new int[r1][c2];
+
+        System.out.println("Matrix A: ");
+        for(int i=0;i<r1;i++){
+            for(int j=0;j<c1;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        System.out.println("Matrix B: ");
+        for(int i=0;i<r2;i++){
+            for(int j=0;j<c2;j++){
+                System.out.print(a[i][j]+" ");
+            }
+            System.out.println();
+        }
+        for(int i=0;i<r1;i++){
+            for(int j=0;j<c2;j++){
+                am[i][j]+=arr[i][j]*a[i][j];
             }
         }
-        System.out.print("]");
+        System.out.println();
+        System.out.println("Result matrix: ");
+        for(int i=0;i<r1;i++){
+            for(int j=0;j<c2;j++){
+                System.out.print(am[i][j]+" ");
+            }
+            System.out.println();
+        }
 
     }
 }
