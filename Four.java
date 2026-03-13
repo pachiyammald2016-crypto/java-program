@@ -1,37 +1,24 @@
-package Array2;
+package String;
 import java.util.Scanner;
 public class Four {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int m=sc.nextInt();
-        int[][] arr=new int[n][m];
-        System.out.println("Sales Data: ");
+        sc.nextLine();
         for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                arr[i][j]=sc.nextInt();
-                System.out.print(arr[i][j]+" ");
+            String m=sc.nextLine();
+            String num="";
+            int r=m.length();
+
+            for(int j=r-1;j>=0;j--){
+                 num+=m.charAt(j);   
             }
-            System.out.println();
+            if(num.equalsIgnoreCase(m)){
+            System.out.println(m+" - Palindrome");
         }
-        int sum=0;
-        int max=0;
-        int index=0;
-        System.out.println();
-        System.out.println("product-wise total sales: ");
-        for(int i=0;i<n;i++){
-            sum=0;
-            System.out.print("product "+i+": ");
-            for(int j=0;j<m;j++){
-                sum+=arr[i][j];
-            }
-            System.out.print(sum);
-            System.out.println();
-            if(sum>max){
-                max=sum;
-                index=i;
-            }
+        else{
+            System.out.println(m+" - Not Palindrome");
         }
-        System.out.println("product "+index+" with "+max+" units");
+        }
     }
 }
