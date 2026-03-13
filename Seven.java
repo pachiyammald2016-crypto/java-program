@@ -1,39 +1,18 @@
-package Array2;
+package String;
 import java.util.Scanner;
 public class Seven {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
-        int m=sc.nextInt();
-        int[][] arr=new int[n][m];
-        int sum=0;
-        System.out.println("inventary grid: ");
+        sc.nextLine();
         for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                arr[i][j]=sc.nextInt();
-                sum+=arr[i][j];
-                System.out.print(arr[i][j]+" ");
-            }
-            System.out.println();
+            String s=sc.nextLine();
+            String[] num=s.split("-");
+            String airline=num[0].substring(0,2);
+            String flight=num[0].substring(2);
+            String from=num[1];
+            String to=num[2];
+            System.out.println("Airline: "+airline+", Flight: "+flight+", From: "+from+", To: "+to);                                                                       
         }
-        System.out.println();
-        System.out.println("total inventary: "+sum);
-
-        System.out.print("max stock zone: ");
-        int max=Integer.MIN_VALUE;
-        int index=0;
-        int index2=0;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(arr[i][j]>max){
-                    max=arr[i][j];
-                    index=i;
-                    index2=j;
-                }
-            }
-        }
-        int avg=sum/(n*m);
-        System.out.println("row "+index+", col "+index2+" ("+max+" units)");
-        System.out.println("avg stock per zone: "+avg);
     }
 }
