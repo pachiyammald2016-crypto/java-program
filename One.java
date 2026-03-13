@@ -1,38 +1,31 @@
-package Array2;
+package String;
 import java.util.Scanner;
 public class One {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int m=sc.nextInt();
-        int[][] arr=new int[n][m];
-        int sum=0;
-        int avg=0;
-        System.out.println("Student average: ");
-        for(int i=0;i<n;i++){
-            sum=0;
-            System.out.print("Student "+i+": ");
-            for(int j=0;j<m;j++){
-                arr[i][j]=sc.nextInt();
-                sum+=arr[i][j];
-            }
-            avg=sum/m;
-            System.out.print(avg*100);
-            System.out.println();
-        }
-        int num=0;
-        int count=0;
-        System.out.println();
-        System.out.println("Subject averages: ");
-        for(int r=0;r<m;r++){
-            count=0;
-            System.out.print("student "+r+": ");
-            for(int s=0;s<n;s++){
-                count+=arr[s][r];
-            }
-            num=count/n;
-            System.out.print(num*100);
-            System.out.println();
-        }
+   public static void main(String[] args){
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    sc.nextLine();
+
+    String num="^[A-Za-z0-9.+%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+    int valid=0;
+    int invalid=0;
+    System.out.println("Email Validation Results: ");
+    for(int i=0;i<n;i++){
+      String p=sc.nextLine();
+
+      if(p.matches(num)){
+         int s=i+1;
+         System.out.println(s+". "+p+" - "+"Valid");
+         valid++;
+      }
+      else{
+         int s=i+1;
+         System.out.println(s+". "+p+" - "+"Invalid");
+         invalid++;
+      }
     }
+    System.out.println("total valid: "+valid);
+    System.out.println("total invalid: "+invalid);
+   } 
 }
