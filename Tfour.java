@@ -10,7 +10,7 @@ public class Tfour {
                 a=a-b;
             }
             else{
-                b=b-a;
+            b=b-a;
             }
         }
         System.out.println(a);
