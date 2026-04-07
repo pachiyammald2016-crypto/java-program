@@ -6,7 +6,7 @@ public class Five {
         int n=sc.nextInt();
         int m=sc.nextInt();
         int[][] arr=new int[n][m];
-        int sum=0;
+        int sum = 0;
         int max=Integer.MIN_VALUE;
         int min=Integer.MAX_VALUE;
         int index=0;
