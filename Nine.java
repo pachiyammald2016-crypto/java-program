@@ -8,7 +8,7 @@ public class Nine {
         int[][] arr=new int[n][m];
         int max=Integer.MIN_VALUE;
         int min=Integer.MAX_VALUE;
-        System.out.println("Elevation map: ");
+        System.out.println("Elevation map:");
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 arr[i][j]=sc.nextInt();
