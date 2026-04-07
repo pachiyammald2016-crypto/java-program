@@ -7,7 +7,7 @@ public class Eight {
     int m=sc.nextInt();
     int s=sc.nextInt();
     int[][] arr=new int[n][m];
-    System.out.println("original image: ");
+    System.out.println("original image:");
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             arr[i][j]=sc.nextInt();
