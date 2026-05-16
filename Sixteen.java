@@ -1,23 +1,22 @@
-package String;
-import java.util.Scanner;
+package Day1;
+
 public class Sixteen {
-   public static void main(String[] args){
-    Scanner sc=new Scanner(System.in);
-    int n=sc.nextInt();
-    sc.nextLine();
-    int count=0;
-    System.out.println("Critical Logs: ");
-    for(int i=0;i<n;i++){
-        String s=sc.nextLine();
-        if(s.contains("ERROR")){
-            count++;
-            System.out.println(s);
+    static int fab(int a, int b, int m){
+        for(int i=1;i<=m;i++){
+            int c=a+b;
+            System.out.println(c);
+            a=b;
+            b=c;
         }
-        if(s.contains("EXCEPTION")){
-            count++;
-            System.out.println(s);
-        }
+        return 0;
     }
-    System.out.println("total errors found: "+count);
-   } 
+    public static void main(String[] args){
+        int a=0;
+        int b=1;
+        int m=10;
+        System.out.println("the fabonacci series is: ");
+        System.out.println(a);
+        System.out.println(b);
+        fab(a,b,m); 
+    }
 }
