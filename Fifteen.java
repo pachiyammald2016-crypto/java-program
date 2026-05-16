@@ -1,15 +1,18 @@
-package String;
-import java.util.Scanner;
+package Day1;
+
 public class Fifteen {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        sc.nextLine();
-        for(int i=0;i<n;i++){
-            String s=sc.nextLine().toLowerCase();
-            String num=s.replaceAll("[^a-z0-9]"," ");
-            String r=num.replaceAll("\\s+"," ");
-           System.out.println(r.trim());
+    static int mul(int a){
+        int num=0;
+        for(int i=1;i<=10;i++){
+            num=a*i;
+            System.out.println(a +" * "+i+" = "+num);
+        }
+            return 0;
+        }
+
+        public static void main(String[] args){
+            int a=2;
+            mul(a);
         }
     }
-}
+    
