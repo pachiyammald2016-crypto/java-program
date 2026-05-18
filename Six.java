@@ -1,13 +1,11 @@
-package Day1;
+package Day2;
 
-public class Six {
+import java.util.Scanner;
+public class Six{
     public static void main(String[] args){
-        int num=5;
-        int fact=1;
-        for(int i=num;i>=1;i--){
-            fact*=i;
-        }
-        System.out.println(fact);
+        Scanner sc=new Scanner(System.in);
+        long num1=sc.nextLong();
+        long num2=sc.nextLong();
+        System.out.printf("%d", num1*num2);
     }
-    
 }
