@@ -1,20 +1,11 @@
-package Day1;
+package Day2;
 
-public class Eight {
+import java.util.Scanner;
+public class Eight{
     public static void main(String[] args){
-        int num=123;
-        int sum=0;
-        while(num!=0){
-            int digit=num%10;
-            int rev=sum+(digit*digit*digit);
-            num=num/10;
-        }
-        if(sum==num){
-            System.out.println("it is true");
-        }
-        else{
-            System.out.println("it is false");
-        }
+        Scanner sc=new Scanner(System.in);
+        float num=sc.nextFloat();
+        float f=num*9/5+32;
+        System.out.printf("%.2f",f);
     }
-    
 }
