@@ -1,10 +1,10 @@
-package Day1;
+package Day2;
 
-public class Three {
+import java.util.Scanner;
+public class Three{
     public static void main(String[] args){
-        for(int i=10;i<=1;i--){
-            System.out.println(i);
-        }
+        Scanner sc=new Scanner(System.in);
+        float num=sc.nextFloat();
+        System.out.printf("%.3f",num);
     }
-    
 }
