@@ -1,15 +1,13 @@
-package Day1;
+package Day2;
 
-public class Seven {
+import java.util.Scanner;
+public class Seven{
     public static void main(String[] args){
-        int num=121;
-        int rev=0;
-        while(num!=0){
-            int digit=num%10;
-            rev=rev*10+digit;
-            num=num/10;
-        }
-        System.out.println(rev);
+        Scanner sc=new Scanner(System.in);
+        String num=sc.nextLine();
+        System.out.printf("%s\n",num);
+        System.out.printf("%s\n",num);
+        System.out.printf("%s\n",num);
+        System.out.printf("%s",num);
     }
-    
 }
