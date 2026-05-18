@@ -1,16 +1,11 @@
-package Day1;
+package Day2;
 
-public class Nine {
+import java.util.Scanner;
+public class Nine{
     public static void main(String[] args){
-        int num=1234;
-        int sum=0;
-        while(num!=0){
-            int digit=num%10;
-            sum=sum+digit;
-            num=num/10;
-        }
-        System.out.println(sum);
+        Scanner sc=new Scanner(System.in);
+        float num=sc.nextFloat();
+        float area=3.14159f*num*num;
+        System.out.printf("%.3f",area);
     }
-
-    
 }
